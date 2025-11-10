@@ -87,6 +87,6 @@ export class Conta {
         console.log(`Tipo da Conta: ${tipo}`);
         console.log(`Titular: ${this._titular}`);
         console.log(`Saldo: R$ ${this._saldo.toFixed(2)}`);
-        console.log("***************************************\n\n");
+        //console.log("***************************************\n\n");
     }
 }
