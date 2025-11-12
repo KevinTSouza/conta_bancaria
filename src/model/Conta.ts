@@ -79,7 +79,7 @@ export abstract class Conta {
                 break;
         }
 
-        console.log("\n\n***************************************");
+        console.log("\n***************************************");
         console.log("Dados da Conta");
         console.log("***************************************");
         console.log(`Número da Conta: ${this._numero}`);
