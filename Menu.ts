@@ -174,6 +174,7 @@ export function main() {
 
                 console.log("Digite o número da conta: ");
                 numero = readlinesync.questionInt("");
+
                 contas.deletar(numero);
                 keyPress();
                 break;
@@ -181,18 +182,45 @@ export function main() {
             case 6:
                 console.log(colors.fg.whitestrong,
                     "\n\nSaque\n\n", colors.reset);
+
+                console.log("Digite o número da conta: ");
+                numero = readlinesync.questionInt("");
+
+                console.log("Digite o valor do saque: ");
+                let valorSaque = readlinesync.questionFloat("");
+
+                contas.sacar(numero, valorSaque);
                 keyPress();
                 break;
 
             case 7:
                 console.log(colors.fg.whitestrong,
                     "\n\nDepósito\n\n", colors.reset);
+
+                console.log("Digite o número da conta: ");
+                numero = readlinesync.questionInt("");
+
+                console.log("Digite o valor do depósito: ");
+                let valorDeposito = readlinesync.questionFloat("");
+
+                contas.depositar(numero, valorDeposito);
                 keyPress();
                 break;
 
             case 8:
                 console.log(colors.fg.whitestrong,
                     "\n\nTransferência entre Contas\n\n", colors.reset);
+
+                console.log("Digite o número da conta de origem: ");
+                let numeroOrigem = readlinesync.questionInt("");
+
+                console.log("Digite o número da conta de destino: ");
+                let numeroDestino = readlinesync.questionInt("");
+
+                console.log("Digite o valor da transferência: ");
+                let valorTransferencia = readlinesync.questionFloat("");
+
+                contas.transferir(numeroOrigem, numeroDestino, valorTransferencia);
                 keyPress();
                 break;
 

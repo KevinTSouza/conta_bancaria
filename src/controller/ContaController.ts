@@ -46,14 +46,37 @@ export class ContaController implements ContaRepository {
             console.log(colors.fg.red, "\nA conta número: " + numero + " não foi encontrada!", colors.reset);
         }
     }
-    sacar(numero: number, valor: number): void {
-        throw new Error("Method not implemented.");
+    public sacar = (numero: number, valor: number) => {
+        let buscarConta = this.buscarNoArray(numero);
+        if (buscarConta != null) {
+            if (buscarConta.sacar(valor) == true) {
+                console.log(colors.fg.green, `\nSaque de R$ ${valor.toFixed(2)} na conta número: ${numero} realizado com sucesso!`, colors.reset);
+            }
+        } else {
+            console.log(colors.fg.red, "\nA conta número: " + numero + " não foi encontrada!", colors.reset);
+        }
     }
-    depositar(numero: number, valor: number): void {
-        throw new Error("Method not implemented.");
+    depositar = (numero: number, valor: number) => {
+        let buscarConta = this.buscarNoArray(numero);
+        if (buscarConta != null) {
+            buscarConta.depositar(valor);
+            console.log(colors.fg.green, `\nDepósito de R$ ${valor.toFixed(2)} na conta número: ${numero} realizado com sucesso!`, colors.reset);
+        } else {
+            console.log(colors.fg.red, "\nA conta número: " + numero + " não foi encontrada!", colors.reset);
+        }
     }
-    transferir(numeroOrigem: number, numeroDestino: number, valor: number): void {
-        throw new Error("Method not implemented.");
+    transferir = (numeroOrigem: number, numeroDestino: number, valor: number) => {
+        let buscarContaOrigem = this.buscarNoArray(numeroOrigem);
+        let buscarContaDestino = this.buscarNoArray(numeroDestino);
+        if (buscarContaOrigem != null && buscarContaDestino != null && numeroOrigem != numeroDestino) {
+            if (buscarContaOrigem.sacar(valor) == true) {
+                buscarContaDestino.depositar(valor);
+                console.log(colors.fg.green, `\nTransferência de R$ ${valor.toFixed(2)} da conta número: ${numeroOrigem} para a conta número: ${numeroDestino}
+                 realizado com sucesso!`, colors.reset);
+            }
+        } else {
+            console.log(colors.fg.red, "\nUma das contas não foi encontrada!", colors.reset);
+        }
     }
 
     gerarNumeroConta(): number {
